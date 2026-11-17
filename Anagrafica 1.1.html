@@ -1,0 +1,80 @@
+<html>
+<head>
+  <body>
+    <input type="text" placeholder="Nome" id="Name">
+      <br>
+    <input type="text" placeholder="Cognome" id="Lastname">
+      <br>
+    <input type="number" placeholder="Età" id="Age">
+      <br>
+    <input type="text" placeholder="Indirizzo" id="Street">
+      <br>
+    <div>
+      <b>Gender:</b>
+        <br>
+      <input type="radio" name="Gender" value="Male">Maschio</input>
+        <br>
+      <input type="radio" name="Gender" value="Female">Femmina</input>
+        <br>
+  
+    
+      <br>
+    <b>Oggetti:</b>
+      <div>
+        <input type="checkbox" name="Objects" value="Pencil">Zaino</input>
+          <br>
+        <input type="checkbox" name="Objects" value="Eraser">Matita</input>
+          <br>
+        <input type="checkbox" name="Objects" value="Pen">Libro</input>
+          <br>
+      </div>
+        <br>
+      <input type="button" value="Submit" onclick="aggiungi()">
+    </div>
+    <div style="padding-left: 25px;">
+      <table id="tabella">
+        <tr>
+          <th>Name</th>
+          <th>Lastname</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Gender</th>
+          <th>Objects</th>
+        </tr>
+      </table>
+    </div>
+    <script>
+      function aggiungi() {
+        var Name = document.getElementById("Name").value
+        var Lastname = document.getElementById("Lastname").value
+        var Age = document.getElementById("Age").value
+        var Address = document.getElementById("Street").value
+        for(i=0;i<document.getElementsByName("Gender").length;i++) {
+          if(document.getElementsByName("Gender")[i].checked){
+            var Gender = document.getElementsByName("Gender")[i].value
+          }
+        }
+        var Objects = "<table><tr>"
+        for(i=0;i<document.getElementsByName("Objects").length;i++) {
+          if(document.getElementsByName("Objects")[i].checked){
+            Objects += "<td>" + document.getElementsByName("Objects")[i].value + "</td>"
+          }
+        }
+
+        var riga = tabella.insertRow(tabella.rows.length)
+        var n = riga.insertCell(0)
+        var c = riga.insertCell(1)
+        var e = riga.insertCell(2)
+        var i = riga.insertCell(3)
+        var s = riga.insertCell(4)
+        var o = riga.insertCell(5)
+        n.innerHTML = Name
+        c.innerHTML = Lastname
+        e.innerHTML = Age
+        i.innerHTML = Address
+        s.innerHTML = Gender
+        o.innerHTML = Objects + "</tr></table>"
+      }
+    </script>
+</body>
+</html>
